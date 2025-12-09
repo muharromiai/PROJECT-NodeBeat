@@ -1,7 +1,9 @@
 import java.util.Scanner;
-public class App {
+public class Main {
     static UserManager userManager = new UserManager(10);
     static LoginSystem loginSystem = new LoginSystem(userManager);
+    static MusicLibrary library = new MusicLibrary();
+  
     public static void main(String[] args) {
         User logged = null;
         while (logged == null) {
@@ -14,8 +16,6 @@ public class App {
         }
     }
 
-
-    // Nyoba aja nii
     // admin
     public static void menuAdmin() {
         Scanner sc = new Scanner(System.in);
@@ -23,19 +23,34 @@ public class App {
         do {
             System.out.println("\n=== MENU ADMIN ===");
             System.out.println("1. Tambah lagu ke library");
-            System.out.println("0. Logout");
+            System.out.println("2. Logout");
             System.out.print("Pilih: ");
-            pilih = sc.nextInt();
-            switch (pilih) {
+            pilih = sc.nextInt(); sc.nextLine();
 
-                // Belom ada fungsi add lagu, ntar bikin yak
+            switch (pilih) {
+                // Menu admin buat masukin genre, artis, ma judul.
                 case 1:
-                    System.out.println("Tambahkan lagu");
+                    System.out.print("Masukkan genre: ");
+                    String genre = sc.nextLine();
+
+                    System.out.print("Masukkan artis: ");
+                    String artist = sc.nextLine();
+
+                    System.out.print("Masukkan judul lagu: ");
+                    String title = sc.nextLine();
+
+                    library.addSong(genre, artist, title);
+                    System.out.println("Lagu berhasil ditambahkan!");
+                    break;
+                case 2: // (balik ke menu login)
+                    return;
+                default:
                     break;
             }
 
         } while (pilih != 0);
     }
+    
     // user biasa
     public static void menuUser() {
         Scanner sc = new Scanner(System.in);
@@ -56,21 +71,25 @@ public class App {
 
             switch (pilih) {
                 // Ini jugak
-                case 1: System.out.println("Fungsi cari lagu..."); break;
-                case 2: System.out.println("Fungsi play lagu..."); break;
-                case 3: System.out.println("Tambah ke queue..."); break;
-                case 4: System.out.println("Buat playlist..."); break;
-                case 5: System.out.println("Putar playlist..."); break;
-                case 6: System.out.println("Undo lagu..."); break;
-                case 7: System.out.println("Next lagu..."); break;
+                case 1: System.out.println("Fungsi cari lagu..."); break; // tambahin fungsi
+                case 2: System.out.println("Fungsi play lagu..."); break;// tambahin fungsi
+                case 3: System.out.println("Tambah ke queue..."); break; // tambahin fungsi
+                case 4: System.out.println("Buat playlist..."); break; // tambahin fungsi
+                case 5: System.out.println("Putar playlist..."); break; // tambahin fungsi
+                case 6: System.out.println("Undo lagu..."); break; // tambahin fungsi
+                case 7: System.out.println("Next lagu..."); break; // tambahin fungsi
             }
 
         } while (pilih != 0);
     }
 
 
+    
+    // ini menu buat user? kalo iya, coba tambahiin di yg atas ini aja
     UndoRedo playlist = new UndoRedo();
     Scanner sc = new Scanner(System.in);
+
+
 
     // Tambah 3 lagu default
     playlist.addSong("Lagu A");
