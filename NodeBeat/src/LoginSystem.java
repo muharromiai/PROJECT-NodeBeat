@@ -1,10 +1,12 @@
 import java.util.Scanner;
+
 public class LoginSystem {
     UserManager userManager;
 
     public LoginSystem(UserManager userManager) {
         this.userManager = userManager;
     }
+
     public User startLogin() {
         Scanner sc = new Scanner(System.in);
 
@@ -20,6 +22,7 @@ public class LoginSystem {
             System.out.println("Login gagal! Username atau password salah.");
             return null;
         }
+
         System.out.println("Login berhasil sebagai: " + u.role);
         return u;
     }

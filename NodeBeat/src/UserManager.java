@@ -1,28 +1,27 @@
+import java.util.ArrayList;
+
 public class UserManager {
+    ArrayList<User> users = new ArrayList<>();
 
-    User[] users;
-    int size;
-
-    public UserManager(int capacity) {
-        users = new User[capacity];
-        size = 0;
-
-        addUser("admin", "1111", "admin");
-        addUser("user", "2222", "user");
+    // Menambah user baru
+    public void addUser(User u) {
+        users.add(u);
     }
 
-    public void addUser(String username, String password, String role) {
-        users[size] = new User(username, password, role);
-        size++;
-    }
-
+    // Login sesuai kebutuhan LoginSystem
     public User login(String username, String password) {
-        for (int i = 0; i < size; i++) {
-            User u = users[i];
+        for (User u : users) {
             if (u.username.equals(username) && u.password.equals(password)) {
                 return u;
             }
         }
         return null;
+    }
+
+    // Menampilkan semua user (opsional)
+    public void showUsers() {
+        for (User u : users) {
+            System.out.println(u.username + " (" + u.role + ")");
+        }
     }
 }
