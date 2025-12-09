@@ -1,4 +1,4 @@
-public class Song {
+public class Song { // node buat lagunya
     String genre;
     String artist;
     String title;
