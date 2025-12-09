@@ -67,4 +67,46 @@ public class App {
 
         } while (pilih != 0);
     }
+
+
+    UndoRedo playlist = new UndoRedo();
+    Scanner sc = new Scanner(System.in);
+
+    // Tambah 3 lagu default
+    playlist.addSong("Lagu A");
+    playlist.addSong("Lagu B");
+    playlist.addSong("Lagu C");
+
+    int pilih;
+
+    do {
+        System.out.println("\n===== MENU MUSIK =====");
+        playlist.showCurrent();
+        System.out.println("1. Next Lagu");
+        System.out.println("2. Prev Lagu");
+        System.out.println("3. Undo");
+        System.out.println("4. Exit");
+        System.out.print("Pilih: ");
+
+        pilih = sc.nextInt();
+        sc.nextLine(); // buang newline
+
+        switch (pilih) {
+            case 1:
+                playlist.next();
+                break;
+            case 2:
+                playlist.prev();
+                break;
+            case 3:
+                playlist.undo();
+                break;
+            case 4:
+                System.out.println("Keluar...");
+                break;
+            default:
+                System.out.println("Pilihan salah!");
+        }
+
+    } while (pilih != 4);
 }
