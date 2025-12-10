@@ -1,5 +1,8 @@
+// ini kenapa ada app main lagi anjirudin
+// buat di Main.java itu uy, pusing jadinya
+
 import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.ArrayList; // emang boleh pake ini semua selain scanner? T_T
 import java.util.Queue;
 import java.util.Stack;
 import java.util.LinkedList;
